@@ -2,7 +2,8 @@
   (:gen-class)
   (:require [clojure.java.io :as io]
             [integrant.core :as ig]
-            [todo.http.server]))
+            [todo.http.server]
+            [todo.http.handler]))
 
 (defonce component (atom nil))
 
