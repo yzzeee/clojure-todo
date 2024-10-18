@@ -2,6 +2,7 @@
   (:gen-class)
   (:require [clojure.java.io :as io]
             [integrant.core :as ig]
+            [todo.db.pool]
             [todo.http.server]
             [todo.http.handler]))
 

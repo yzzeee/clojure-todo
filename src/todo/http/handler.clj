@@ -3,6 +3,7 @@
     [clojure.tools.logging :as log]
     [compojure.core :refer :all]
     [compojure.route :as route]
+    [todo.http.middleware :refer [wrap-base]]
     [integrant.core :as ig]))
 
 
@@ -22,4 +23,4 @@
 
 (defmethod ig/init-key :http/handler [_ _]
   (log/info "handler created")
-  (handler))
+  (-> (handler) (wrap-base)))
