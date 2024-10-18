@@ -1,13 +1,14 @@
 (ns todo.db.handler
   (:require [next.jdbc :as jdbc]
+            [next.jdbc.result-set :as rs]
             [todo.db.pool :refer [db]]))
 
 
 (defn select-todos
   ([]
-   (jdbc/execute! @db ["select * from todos"]))
+   (jdbc/execute! @db ["select * from todos"] {:builder-fn rs/as-unqualified-maps}))
   ([id]
-   (jdbc/execute! @db ["select * from todos where id=?" id])))
+   (jdbc/execute! @db ["select * from todos where id=?" id]  {:builder-fn rs/as-unqualified-maps})))
 
 (defn insert-todo [content]
   "return id"
